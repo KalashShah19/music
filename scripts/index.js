@@ -17,6 +17,7 @@ function loadSong(index) {
     }
 }
 
+// Play or pause the audio
 document.getElementById("play-pause").addEventListener("click", () => {
     if (audioPlayer.paused) {
         audioPlayer.play();
@@ -27,16 +28,26 @@ document.getElementById("play-pause").addEventListener("click", () => {
     }
 });
 
+// Load and play the previous song
 document.getElementById("prev").addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + songs.length) % songs.length;
     loadSong(currentIndex);
     audioPlayer.play();
 });
 
+// Load and play the next song
 document.getElementById("next").addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % songs.length;
     loadSong(currentIndex);
     audioPlayer.play();
 });
 
+// Automatically play the next song when the current song ends
+audioPlayer.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % songs.length;
+    loadSong(currentIndex);
+    audioPlayer.play();
+});
+
+// Load the first song when the page loads
 loadSong(currentIndex);
