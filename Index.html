@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player with Playlists</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="music-player">
+        <h1>🎵 Kalash's Music Player</h1>
+        <div class="player">
+            <audio id="audio-player" controls>
+                Your browser does not support the audio element.
+            </audio>
+            <div class="controls">
+                <button id="prev">⏮ Previous</button>
+                <button id="play-pause">▶️ Play</button>
+                <button id="next">⏭ Next</button>
+            </div>
+            <div class="song-info">
+                <p id="current-song">No song playing</p>
+            </div>
+        </div>        
+
+    </div>
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>
