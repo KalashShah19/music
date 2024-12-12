@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player with Playlists</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+    <title>Upload Your Favourite Song</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e90ff, #a1ffce);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .music-player {
+            background-color: #1e1e2f;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .music-player h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .song-input {
+            margin: 20px 0;
+        }
+
+        .song-input input[type="text"],
+        .song-input input[type="file"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+        }
+
+        .song-input button {
+            padding: 10px 20px;
+            background-color: #00b894;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .song-input button:hover {
+            background-color: #00997d;
+        }
+
+        .song-input input[type="file"]::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        .song-input input[type="file"]::before {
+            content: 'Choose File';
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .song-input input[type="file"]:hover::before {
+            background: #00997d;
+        }
+    </style>
+</head>
 <body>
     <div class="music-player">
-
+        <h2> Upload Your Favourite Song</h2>
         <div class="song-input">
-            <input type="text" id="song-title" placeholder="Enter Song Title">
             <input type="file" id="song-file" accept="audio/*">
             <button id="upload-song">Upload Song</button>
         </div>
-        
     </div>
 
     <script src="scripts/script.js"></script>

@@ -15,8 +15,8 @@ h1, h2 {
     margin: 20px 0;
 }
 
-input[type="text"] {
-    width: calc(100% - 100px);
+input[type="text"],input[type="file"] {
+    width: 95%;
     padding: 10px;
     margin-right: 10px;
     border: none;
