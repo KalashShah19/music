@@ -1,4 +1,4 @@
-const GITHUB_TOKEN = "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"; // Replace with your token
+const GITHUB_TOKEN = ""; // Replace with your token
 const OWNER = "KalashShah19"; // Replace with your GitHub username
 const REPO = "music"; // Replace with your repository name
 const BRANCH = "main"; // Replace with the branch name
