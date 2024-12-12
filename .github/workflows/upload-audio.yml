@@ -1,0 +1,15 @@
+name: Upload Audio File
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  upload-audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v3
+        with:
+          name: audio-file
+          path: songs/*.mp3
