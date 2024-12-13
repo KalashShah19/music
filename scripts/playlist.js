@@ -45,7 +45,7 @@ async function overwriteFile(content) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                message: "Update file content",
+                message: "Updated playlists",
                 content: base64Content,
                 branch: BRANCH,
                 sha, // Required to overwrite the file
