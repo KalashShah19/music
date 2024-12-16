@@ -2,7 +2,7 @@ const token = "hiq_9EiB4ilW8vCPAthxwUteFMrGzvAmMq02WQaW";
 const username = "LbmbtiTibi19";
 const REPO = "music";
 const BRANCH = "main";
-const FILE_PATH = "resources/playlists.txt";
+const FILE_PATH = "resources/playlists.json";
 
 function shiftString(text, shift) {
     return text.split('').map(char => {
@@ -74,33 +74,129 @@ async function overwriteFile(content) {
 
 const PLAYLISTS_FILE_PATH = "resources/playlists.json";
 const SONGS_FOLDER_PATH = "songs/";
-
+// Utility functions for loading screen
 function showLoading(message) {
-    const loading = document.createElement("div");
-    loading.id = "loading-screen";
-    loading.style.position = "fixed";
-    loading.style.top = "0";
-    loading.style.left = "0";
-    loading.style.width = "100%";
-    loading.style.height = "100%";
-    loading.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-    loading.style.color = "#fff";
-    loading.style.display = "flex";
-    loading.style.justifyContent = "center";
-    loading.style.alignItems = "center";
-    loading.style.zIndex = "1000";
-    loading.textContent = message;
-    document.body.appendChild(loading);
+    let loadingScreen = document.getElementById("loading-screen");
+    if (!loadingScreen) {
+        loadingScreen = document.createElement("div");
+        loadingScreen.id = "loading-screen";
+        loadingScreen.style.position = "fixed";
+        loadingScreen.style.top = "0";
+        loadingScreen.style.left = "0";
+        loadingScreen.style.width = "100%";
+        loadingScreen.style.height = "100%";
+        loadingScreen.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        loadingScreen.style.color = "#fff";
+        loadingScreen.style.display = "flex";
+        loadingScreen.style.justifyContent = "center";
+        loadingScreen.style.alignItems = "center";
+        loadingScreen.style.zIndex = "1000";
+        document.body.appendChild(loadingScreen);
+    }
+    loadingScreen.textContent = message;
+    loadingScreen.style.display = "flex";
 }
 
 function hideLoading() {
-    const loading = document.getElementById("loading-screen");
-    if (loading) document.body.removeChild(loading);
+    const loadingScreen = document.getElementById("loading-screen");
+    if (loadingScreen) {
+        loadingScreen.style.display = "none";
+    }
 }
 
-// Fetch song names from the GitHub repository's "songs" folder
+// Fetch JSON content from GitHub repository
+async function fetchContent(url) {
+    const response = await fetch(url, {
+        headers: {
+            Authorization: `Bearer ${OGtoken}`,
+        },
+    });
+
+    if (response.ok) {
+        const file = await response.json();
+        return JSON.parse(atob(file.content));
+    } else if (response.status === 404) {
+        return []; // File not found, return an empty array
+    } else {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+}
+async function fetchFileMetadata(url) {
+    const response = await fetch(url, {
+        headers: {
+            Authorization: `Bearer ${OGtoken}`,
+        },
+    });
+
+    if (response.ok) {
+        return await response.json(); // Returns the full file metadata, including `sha`
+    } else if (response.status === 404) {
+        return null; // File not found
+    } else {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+}
+
+async function pushContent(url, content, message) {
+    // Fetch the file metadata to get the `sha`
+    const metadata = await fetchFileMetadata(url);
+    const sha = metadata ? metadata.sha : undefined;
+
+    const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${OGtoken}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            message,
+            content: btoa(content),
+            branch: BRANCH,
+            ...(sha && { sha }), // Include `sha` only if it exists
+        }),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+}
+
+// Fetch playlists
+async function fetchPlaylists() {
+    showLoading("Fetching playlists...");
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
+    try {
+        const content = await fetchContent(url);
+        return content;
+    } catch (error) {
+        alert(`Error fetching playlists: ${error.message}`);
+        console.error(error);
+        return [];
+    } finally {
+        hideLoading();
+    }
+}
+
+// Save playlists
+async function savePlaylists(playlists) {
+    showLoading("Saving playlists...");
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
+    try {
+        await pushContent(url, playlists, "Updated playlists");
+        alert("Playlists saved successfully!");
+    } catch (error) {
+        alert(`Error saving playlists: ${error.message}`);
+        console.error(error);
+    } finally {
+        hideLoading();
+    }
+}
+
+// Fetch songs
 async function fetchSongs() {
-    console.log("fetching songs");
     showLoading("Fetching songs...");
     const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${SONGS_FOLDER_PATH}`;
     try {
@@ -110,93 +206,84 @@ async function fetchSongs() {
             },
         });
 
-        if (response.ok) {
-            const files = await response.json();
-            const songs = files.map(file => file.name);
-            hideLoading();
-            return songs;
-        } else {
+        if (!response.ok) {
             const error = await response.json();
-            console.error("Failed to fetch songs:", error);
-            hideLoading();
-            alert("Failed to fetch songs: " + error.message);
+            throw new Error(error.message || "Failed to fetch songs.");
         }
+
+        const files = await response.json();
+        return files.map(file => file.name);
     } catch (error) {
-        console.error("Error fetching songs:", error);
-        hideLoading();
-        alert("An unexpected error occurred.");
-    }
-}
-
-// Fetch existing playlists from the repository
-async function fetchPlaylists() {
-    console.log("fetching songs");
-    showLoading("Fetching playlists...");
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
-    try {
-        const response = await fetch(url, {
-            headers: {
-                Authorization: `Bearer ${OGtoken}`,
-            },
-        });
-
-        if (response.ok) {
-            const file = await response.json();
-            const content = atob(file.content);
-            hideLoading();
-            return JSON.parse(content);
-        } else if (response.status === 404) {
-            hideLoading();
-            return {}; // No playlists file exists
-        } else {
-            const error = await response.json();
-            console.error("Failed to fetch playlists:", error);
-            hideLoading();
-            alert("Failed to fetch playlists: " + error.message);
-        }
-    } catch (error) {
-        console.error("Error fetching playlists:", error);
-        hideLoading();
-        alert("An unexpected error occurred.");
-    }
-}
-
-// Save playlists to the repository
-async function savePlaylists(playlists) {
-    showLoading("Saving playlists...");
-    const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
-    try {
-        const content = btoa(JSON.stringify(playlists, null, 2));
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                Authorization: `Bearer ${OGtoken}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                message: "Updated playlists",
-                content,
-                branch: BRANCH,
-            }),
-        });
-
-        if (response.ok) {
-            alert("Playlists updated successfully!");
-        } else {
-            const error = await response.json();
-            console.error("Failed to save playlists:", error);
-            alert("Failed to save playlists: " + error.message);
-        }
-    } catch (error) {
-        console.error("Error saving playlists:", error);
-        alert("An unexpected error occurred.");
+        alert(`Error fetching songs: ${error.message}`);
+        console.error(error);
+        return [];
     } finally {
         hideLoading();
     }
 }
 
-// Add event listeners for playlist creation, deletion, and updating
-document.getElementById("create-playlist").addEventListener("click", async () => {
+// Render playlists
+async function renderPlaylists() {
+    const playlists = await fetchPlaylists();
+    const playlistList = document.getElementById("playlist-list");
+    playlistList.innerHTML = "";
+
+    playlists.forEach(({ playlistName }) => {
+        const li = document.createElement("li");
+        li.textContent = playlistName;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", async () => {
+            const updatedPlaylists = playlists.filter(
+                playlist => playlist.playlistName !== playlistName
+            );
+            await savePlaylists(updatedPlaylists);
+            renderPlaylists();
+        });
+
+        li.appendChild(deleteButton);
+        li.addEventListener("click", () => renderSongs(playlistName, playlists));
+        playlistList.appendChild(li);
+    });
+}
+
+// Render songs for a playlist
+async function renderSongs(playlistName, playlists) {
+    const songList = document.getElementById("song-list");
+    const songs = await fetchSongs();
+    const playlist = playlists.find(p => p.playlistName === playlistName);
+    document.getElementById("playlist-title").textContent = playlistName;
+    songList.innerHTML = "";
+
+    songs.forEach(song => {
+        const li = document.createElement("li");
+        li.textContent = song;
+
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = playlist.songs.includes(song) ? "Remove" : "Add";
+        toggleButton.addEventListener("click", async () => {
+            const updatedPlaylists = playlists.map(p => {
+                if (p.playlistName === playlistName) {
+                    if (p.songs.includes(song)) {
+                        p.songs = p.songs.filter(s => s !== song);
+                    } else {
+                        p.songs.push(song);
+                    }
+                }
+                return p;
+            });
+            await savePlaylists(updatedPlaylists);
+            renderSongs(playlistName, updatedPlaylists);
+        });
+
+        li.appendChild(toggleButton);
+        songList.appendChild(li);
+    });
+}
+
+// Add a new playlist
+async function createPlaylist() {
     const playlistName = document.getElementById("playlist-name").value.trim();
     if (!playlistName) {
         alert("Please enter a playlist name.");
@@ -204,73 +291,20 @@ document.getElementById("create-playlist").addEventListener("click", async () =>
     }
 
     const playlists = await fetchPlaylists();
-    if (playlists[playlistName]) {
+    if (playlists.some(p => p.playlistName === playlistName)) {
         alert("Playlist already exists.");
         return;
     }
 
-    playlists[playlistName] = [];
+    playlists.push({ playlistName, songs: [] });
     await savePlaylists(playlists);
     renderPlaylists();
-});
-
-async function renderPlaylists() {
-    const playlists = await fetchPlaylists();
-    const playlistList = document.getElementById("playlist-list");
-    playlistList.innerHTML = "";
-
-    for (const playlistName in playlists) {
-        const li = document.createElement("li");
-        li.textContent = playlistName;
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.addEventListener("click", async () => {
-            delete playlists[playlistName];
-            await savePlaylists(playlists);
-            renderPlaylists();
-        });
-
-        li.appendChild(deleteButton);
-        playlistList.appendChild(li);
-
-        li.addEventListener("click", async () => {
-            renderSongs(playlistName, playlists[playlistName]);
-        });
-    }
-}
-
-async function renderSongs(playlistName, playlistSongs) {
-    const songList = document.getElementById("song-list");
-    document.getElementById("playlist-title").textContent = playlistName;
-    songList.innerHTML = "";
-
-    const songs = await fetchSongs();
-    for (const song of songs) {
-        const li = document.createElement("li");
-        li.textContent = song;
-
-        const addButton = document.createElement("button");
-        addButton.textContent = playlistSongs.includes(song) ? "Remove" : "Add";
-        addButton.addEventListener("click", async () => {
-            const playlists = await fetchPlaylists();
-            if (playlists[playlistName].includes(song)) {
-                playlists[playlistName] = playlists[playlistName].filter(s => s !== song);
-            } else {
-                playlists[playlistName].push(song);
-            }
-            await savePlaylists(playlists);
-            renderSongs(playlistName, playlists[playlistName]);
-        });
-
-        li.appendChild(addButton);
-        songList.appendChild(li);
-    }
 }
 
 // Initialize the page
 (async () => {
-    renderPlaylists();
+    document.getElementById("create-playlist").addEventListener("click", createPlaylist);
+    await renderPlaylists();
 })();
 
 //#endregion
