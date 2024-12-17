@@ -74,6 +74,7 @@ async function overwriteFile(content) {
 
 const PLAYLISTS_FILE_PATH = "resources/playlists.json";
 const SONGS_FOLDER_PATH = "songs/";
+
 // Utility functions for loading screen
 function showLoading(message) {
     let loadingScreen = document.getElementById("loading-screen");
@@ -172,7 +173,12 @@ async function fetchPlaylists() {
         const content = await fetchContent(url);
         return content;
     } catch (error) {
-        alert(`Error fetching playlists: ${error.message}`);
+        await Swal.fire({
+            icon: "error",
+            title: "Error Fetching Playlists",
+            text: error.message,
+            confirmButtonColor: "#d33",
+        });
         console.error(error);
         return [];
     } finally {
@@ -185,10 +191,21 @@ async function savePlaylists(playlists) {
     showLoading("Saving playlists...");
     const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
     try {
-        await pushContent(url, playlists, "Updated playlists");
-        alert("Playlists saved successfully!");
+        const content = JSON.stringify(playlists, null, 2); // Properly serialize the playlists object
+        await pushContent(url, content, "Updated playlists");
+        await Swal.fire({
+            icon: "success",
+            title: "Playlists Saved",
+            text: "Your playlists were successfully saved!",
+            confirmButtonColor: "#3085d6",
+        });
     } catch (error) {
-        alert(`Error saving playlists: ${error.message}`);
+        await Swal.fire({
+            icon: "error",
+            title: "Error Saving Playlists",
+            text: error.message,
+            confirmButtonColor: "#d33",
+        });
         console.error(error);
     } finally {
         hideLoading();
@@ -234,6 +251,7 @@ async function renderPlaylists() {
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
+        deleteButton.style.background = "red";
         deleteButton.addEventListener("click", async () => {
             const updatedPlaylists = playlists.filter(
                 playlist => playlist.playlistName !== playlistName
@@ -262,6 +280,7 @@ async function renderSongs(playlistName, playlists) {
 
         const toggleButton = document.createElement("button");
         toggleButton.textContent = playlist.songs.includes(song) ? "Remove" : "Add";
+        toggleButton.style.background = playlist.songs.includes(song) ? "red" : "";
         toggleButton.addEventListener("click", async () => {
             const updatedPlaylists = playlists.map(p => {
                 if (p.playlistName === playlistName) {
@@ -282,21 +301,36 @@ async function renderSongs(playlistName, playlists) {
     });
 }
 
+
 // Add a new playlist
 async function createPlaylist() {
     const playlistName = document.getElementById("playlist-name").value.trim();
     if (!playlistName) {
-        alert("Please enter a playlist name.");
+        await Swal.fire({
+            icon: "warning",
+            title: "Empty Playlist Name",
+            text: "Please enter a playlist name.",
+            confirmButtonColor: "#3085d6",
+        });
         return;
     }
 
     const playlists = await fetchPlaylists();
-    if (playlists.some(p => p.playlistName === playlistName)) {
-        alert("Playlist already exists.");
+    if (playlists.some(playlist => playlist.playlistName === playlistName)) {
+        await Swal.fire({
+            icon: "warning",
+            title: "Duplicate Playlist",
+            text: "A playlist with this name already exists.",
+            confirmButtonColor: "#3085d6",
+        });
         return;
     }
 
-    playlists.push({ playlistName, songs: [] });
+    playlists.push({
+        playlistName: playlistName,
+        songs: [], // Initialize with an empty songs array
+    });
+
     await savePlaylists(playlists);
     renderPlaylists();
 }
