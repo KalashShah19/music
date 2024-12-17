@@ -1,14 +1,14 @@
 [
     {
-        "playlistName": "Kalash's Fav",
-        "songs": [
+      "playlistName": "Kalash's Fav",
+      "songs": [
         "Jaanam - Bad Newz.mp3",
         "Khoobsurat - Stree 2.mp3",
         "Vekh Sohneyaa.mp3"
-        ]
+      ]
     },
     {
-        "playlistName": "New",
-        "songs": []
+      "playlistName": "New",
+      "songs": []
     }
-]
+  ]
