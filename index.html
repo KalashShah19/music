@@ -7,12 +7,22 @@
     <title>Music Player with Playlists</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/icon.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <div class="music-player">
         <h1> <span id="logo"> 🎵 </span> Kalash's Music Player</h1>
         <div class="player">
+            <div>
+                <h3>Select Playlist</h3>
+                <ul id="playlist-list"></ul>
+            </div>
+            
+            <div>
+                <h3 id="playlist-title"></h3>
+                <ul id="song-list"></ul>
+            </div>
             <audio id="audio-player" controls>
                 Your browser does not support the audio element.
             </audio>

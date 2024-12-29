@@ -75,7 +75,6 @@ async function overwriteFile(content) {
 const PLAYLISTS_FILE_PATH = "resources/playlists.json";
 const SONGS_FOLDER_PATH = "songs/";
 
-// Utility functions for loading screen
 function showLoading(message) {
     let loadingScreen = document.getElementById("loading-screen");
     if (!loadingScreen) {
@@ -117,12 +116,13 @@ async function fetchContent(url) {
         const file = await response.json();
         return JSON.parse(atob(file.content));
     } else if (response.status === 404) {
-        return []; // File not found, return an empty array
+        return [];
     } else {
         const error = await response.json();
         throw new Error(error.message);
     }
 }
+
 async function fetchFileMetadata(url) {
     const response = await fetch(url, {
         headers: {
@@ -131,9 +131,9 @@ async function fetchFileMetadata(url) {
     });
 
     if (response.ok) {
-        return await response.json(); // Returns the full file metadata, including `sha`
+        return await response.json();
     } else if (response.status === 404) {
-        return null; // File not found
+        return null;
     } else {
         const error = await response.json();
         throw new Error(error.message);
@@ -141,7 +141,6 @@ async function fetchFileMetadata(url) {
 }
 
 async function pushContent(url, content, message) {
-    // Fetch the file metadata to get the `sha`
     const metadata = await fetchFileMetadata(url);
     const sha = metadata ? metadata.sha : undefined;
 
@@ -155,7 +154,7 @@ async function pushContent(url, content, message) {
             message,
             content: btoa(content),
             branch: BRANCH,
-            ...(sha && { sha }), // Include `sha` only if it exists
+            ...(sha && { sha }),
         }),
     });
 
@@ -191,7 +190,7 @@ async function savePlaylists(playlists) {
     showLoading("Saving playlists...");
     const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PLAYLISTS_FILE_PATH}`;
     try {
-        const content = JSON.stringify(playlists, null, 2); // Properly serialize the playlists object
+        const content = JSON.stringify(playlists, null, 2);
         await pushContent(url, content, "Updated playlists");
         await Swal.fire({
             icon: "success",
@@ -328,7 +327,7 @@ async function createPlaylist() {
 
     playlists.push({
         playlistName: playlistName,
-        songs: [], // Initialize with an empty songs array
+        songs: [],
     });
 
     await savePlaylists(playlists);
