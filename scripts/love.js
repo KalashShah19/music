@@ -1,7 +1,7 @@
 const songs = [
     { title: "Tum Se", url: "./songs/Tum Se - Teri Baaton Mein Aisa Uljha Jiya.mp3" },
     { title: "Akhiyaan Gulaab", url: "./songs/Akhiyaan Gulaab - Teri Baaton Mein Aisa Uljha Jiya.mp3" },
-    { title: "Hua Mai", url: "./songs/Hua Mai - Animal.mp3" },
+    { title: "Hua Mai", url: "./songs/Hua Main - Animal.mp3" },
     { title: "Pehle Bhi Main", url: "./songs/Pehle Bhi Main - Animal.mp3" },
     { title: "Satranga", url: "./songs/Satranga - Animal.mp3" },
     { title: "Humraah", url: "./songs/Humraah - Malang.mp3" },
