@@ -1,8 +1,6 @@
-
 const songs = [
-    { title: "Anuv Jain - JO TUM MERE HO", url: "./songs/Anuv Jain - JO TUM MERE HO.mp3" },
-    { title: "Anuv Jain - HUSN", url: "./songs/Anuv Jain - HUSN.mp3" },
-    { title: "AUR - TU HAI KAHAN", url: "./songs/AUR - TU HAI KAHAN.mp3" },
+    { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
+    { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
 ];
 
 let currentIndex = 0;

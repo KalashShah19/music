@@ -1,10 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1e90ff, #a1ffce);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #2a2a3b;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar .active {
+    color: #00b894;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #00b894;
+}
+
+.navbar h1 {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: white;
+}
+
+/* Main Content */
 .music-player {
     background-color: #1e1e2f;
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 100px;
+    text-align: center;
 }
 
 h1, h2 {
@@ -15,7 +70,7 @@ h1, h2 {
     margin: 20px 0;
 }
 
-input[type="text"],input[type="file"] {
+input[type="text"], input[type="file"] {
     width: 95%;
     padding: 10px;
     margin-right: 10px;
@@ -62,18 +117,7 @@ ul li button:hover {
     background-color: #e84118;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1e90ff, #a1ffce);
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
+/* Player Controls */
 .player {
     background-color: #1e1e2f;
     padding: 30px;
@@ -122,6 +166,31 @@ button:hover {
 }
 
 #logo {
-    /* color: red; */
     filter: hue-rotate(300deg) saturate(5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .music-player {
+        width: 95%;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    ul li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    ul li button {
+        margin-top: 10px;
+    }
 }

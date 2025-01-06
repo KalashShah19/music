@@ -13,7 +13,7 @@ function loadSong(index) {
     const song = songs[index];
     if (song) {
         audioPlayer.src = song.url;
-        songInfo.textContent = `Now playing: ${song.title}`;
+        songInfo.textContent = `${song.title}`;
     }
 }
 
