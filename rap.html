@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rap</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="images/icon.jpg">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1> <span id="logo"> 🎵 </span> Kalash's Music Player</h1>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="love.html">Love</a>
+            <a class="active" href="rap.html">Rap</a>
+            <a href="sad.html">Sad</a>
+            <a href="english.html">English</a>
+            <a href="upload.html">Upload</a>
+        </div>
+    </div>
+
+    <div class="music-player">
+        <div class="song-info">
+            <h1>Now Playing : <br>
+                <span id="current-song"> </span></h1>
+        </div>
+        <div class="player">
+            <audio id="audio-player" controls>
+                Your browser does not support the audio element.
+            </audio>
+            <div class="controls">
+                <button id="prev">⏮ Previous</button>
+                <button id="play-pause">▶️ Play</button>
+                <button id="next">⏭ Next</button>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/rap.js"></script>
+</body>
+
+</html>
