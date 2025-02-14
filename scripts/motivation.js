@@ -1,9 +1,10 @@
+
 const songs = [
-    { title: "Sunflower", url: "./songs/Sunflower.mp3" },
-    { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
-    { title: "I Wanna Be Yours", url: "./songs/I Wanna Be Yours.m4a" },
-    { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
-    { title: "In The Name Of Love", url: "./songs/In The Name Of Love.mp3" },
+    { title: "359 AM - Divine", url: "./songs/359 AM - Divine.mp3" },
+    { title: "Satya - Divine", url: "./songs/Satya - Divine.mp3" },
+    { title: "The Big Bull", url: "./songs/The Big Bull.mp3" },
+    { title: "Apna Time Aayega", url: "./songs/Apna Time Aayega.mp3" },
+    { title: "Kohinoor - Divine", url: "./songs/Kohinoor - Divine.mp3" },
 ];
 
 let currentIndex = 0;
@@ -14,7 +15,6 @@ function loadSong(index) {
     const song = songs[index];
     if (song) {
         audioPlayer.src = song.url;
-	audioPlayer.type = "audio/mp3";
         songInfo.textContent = `${song.title}`;
     }
 }
