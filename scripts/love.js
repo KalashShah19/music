@@ -47,6 +47,7 @@ function changeSong(direction) {
     currentIndex = (currentIndex + direction + songs.length) % songs.length;
     loadSong(currentIndex);
     audioPlayer.play();
+    changeMetaData(currentIndex);
 }
 
 // Automatically play the next song when the current song ends
@@ -123,3 +124,30 @@ document.addEventListener('touchend', handleSwipe);
 
 // Load and play the first song on page load
 loadSong(currentIndex);
+
+if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('play', () => {
+        audioPlayer.play();
+    });
+
+    navigator.mediaSession.setActionHandler('pause', () => {
+        audioPlayer.pause();
+    });
+
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+        // Add logic to go to the previous song
+        changeSong(-1);
+    });
+
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+        // Add logic to go to the next song
+        changeSong(1);
+    });
+}
+
+function changeMetaData(id){
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: songs[id].title,
+        album: "Love",
+    });
+}
