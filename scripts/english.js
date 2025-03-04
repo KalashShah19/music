@@ -1,9 +1,10 @@
 const songs = [
     { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
+    { title: "Die With A Smile", url: "./songs/Lover.mp3" },
+    { title: "Die With A Smile", url: "./songs/One Of The Girls x Good For You.mp3" },
     { title: "I Wanna Be Yours", url: "./songs/I Wanna Be Yours.m4a" },
     { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
-    { title: "In The Name Of Love", url: "./songs/In The Name Of Love.mp3" },
 ];
 
 let currentIndex = 0;
