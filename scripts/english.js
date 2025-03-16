@@ -5,6 +5,7 @@ const songs = [
     { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
     { title: "I Wanna Be Yours", url: "./songs/I Wanna Be Yours.m4a" },
     { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
+    { title: "All The Stars", url: "./songs/All The Stars.mp3" },
 ];
 
 let currentIndex = 0;
