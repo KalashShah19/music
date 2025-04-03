@@ -1,11 +1,17 @@
 const songs = [
-    { title: "Sunflower", url: "./songs/Sunflower.mp3" },
+    { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
+    { title: "Good For You x One Of The Girls", url: "./songs/Good For You x One Of The Girls.mp3" },
+    { title: "Good For You", url: "./songs/Good For You.mp3" },
+    { title: "One Of The Girls", url: "./songs/One Of The Girls.mp3" },
+    { title: "Timeless", url: "./songs/Timeless.mp3" },
+    { title: "Often", url: "./songs/Often.mp3" },
+    { title: "France Football Song", url: "./songs/France Football Song.mp3" },
+    { title: "All The Stars", url: "./songs/All The Stars.mp3" },
     { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
     { title: "Lover - Taylor Swift", url: "./songs/Lover.mp3" },
-    { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
+    { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "I Wanna Be Yours", url: "./songs/I Wanna Be Yours.m4a" },
     { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
-    { title: "All The Stars", url: "./songs/All The Stars.mp3" },
 ];
 
 let currentIndex = 0;
