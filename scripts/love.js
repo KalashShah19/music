@@ -12,7 +12,11 @@ const songs = [
     { title: "Dil Se Dil Tak", url: "./songs/Dil Se Dil Tak.mp3" },
     { title: "Tere Pyaar Mein", url: "./songs/Tere Pyaar Mein - Tu Jhoothi Main Makkaar.mp3" },
     { title: "Vekh Sohneyaa", url: "./songs/Vekh Sohneyaa.mp3" },
+    { title: "Tere Pyaar Mein", url: "./songs/Tere Pyaar Mein - Tu Jhoothi Main Makkaar.mp3" },
     { title: "Jaanam", url: "./songs/Jaanam - Bad Newz.mp3" },
+    { title: "Nachi Nachi", url: "./songs/Nachi Nachi - Street Dancer 3D.mp3" },
+    { title: "Garmi", url: "./songs/Garmi - Street Dancer 3D.mp3" },
+    { title: "Mile Sur Mera Tumhara", url: "./songs/Mile Sur - Street Dancer 3D.mp3" },
 ];
 
 let currentIndex = 0;

@@ -11,6 +11,8 @@ const songs = [
     { title: "Lover - Taylor Swift", url: "./songs/Lover.mp3" },
     { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "I Wanna Be Yours", url: "./songs/I Wanna Be Yours.m4a" },
+    { title: "Dandelions", url: "./songs/Dandelions.mp3" },
+    { title: "In The Name Of Love", url: "./songs/In The Name Of Love.mp3" },
     { title: "Until I Found You", url: "./songs/Until I Found You.mp3" },
 ];
 
