@@ -67,22 +67,25 @@ function handleShortcuts(event) {
         case '1':  // Open Fav PLaylist
             window.location.href='index.html';
             break;
-        case '2':  // Open Love PLaylist
-            window.location.href='love.html';
-            break;
-        case '3':  // Open Rap PLaylist
+        case '2':  // Open Rap PLaylist
             window.location.href='rap.html';
             break;
-        case '4':  // Open Motivation PLaylist
-            window.location.href='motivation.html';
+        case '3':  // Open Weeknd PLaylist
+            window.location.href='weeknd.html';
             break;
-        case '5':  // Open Sad PLaylist
-            window.location.href='sad.html';
-            break;
-        case '6':  // Open English PLaylist
+        case '4':  // Open English PLaylist
             window.location.href='english.html';
             break;
-        case '7':  // Open Upload Page
+        case '5':  // Open Motivational PLaylist
+            window.location.href='motivation.html';
+            break;
+        case '6':  // Open Love PLaylist
+            window.location.href='love.html';
+            break;
+        case '7':  // Open Sad Playlist
+            window.location.href='sad.html';
+            break;
+        case '8':  // Open Upload Page
             window.location.href='upload.html';
             break;
         default:
