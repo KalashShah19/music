@@ -144,3 +144,41 @@ function changeMetaData(id){
         album: "Fav",
     });
 }
+
+let isShuffle = true; // Set to true if you want shuffle mode enabled by default
+const recentSongs = []; // Stores the indices of recently played songs
+const maxRecent = 5; // Number of recent songs to exclude in shuffle
+
+// Modified changeSong function with shuffle support
+function changeSong(direction) {
+    if (isShuffle && direction === 1) {
+        let nextIndex;
+        do {
+            nextIndex = Math.floor(Math.random() * songs.length);
+        } while (recentSongs.includes(nextIndex));
+
+        currentIndex = nextIndex;
+
+        // Update recentSongs queue
+        recentSongs.push(currentIndex);
+        if (recentSongs.length > maxRecent) {
+            recentSongs.shift(); // Remove the oldest song index
+        }
+    } else {
+        // Normal sequential logic
+        currentIndex = (currentIndex + direction + songs.length) % songs.length;
+    }
+
+    loadSong(currentIndex);
+    audioPlayer.play();
+    changeMetaData(currentIndex);
+}
+
+// Optional: Add a button to toggle shuffle mode
+const shuffleButton = document.getElementById("shuffle-toggle");
+if (shuffleButton) {
+    shuffleButton.addEventListener("click", () => {
+        isShuffle = !isShuffle;
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+    });
+}

@@ -1,8 +1,8 @@
 const songs = [
     { title: "Dhiktana Dhiktana - Mad Trip", url: "./songs/Dhiktana Dhiktana - Mad Trip.mp3" },
     { title: "Bataa De Tu - 99side", url: "./songs/Bataa De Tu - 99side.mp3" },
-    { title: "Majja Ni Life - Mad Trip", url: "./songs/Majja Ni Life - Mad Trip.mp3" },
     { title: "Boom Padi Dese - Mad Trip", url: "./songs/Boom Padi Dese - Mad Trip.mp3" },
+    { title: "Majja Ni Life - Mad Trip", url: "./songs/Majja Ni Life - Mad Trip.mp3" },
     { title: "Baap Ka Raaj - Mad Trip", url: "./songs/Baap Ka Raaj - Mad Trip.mp3" },
     { title: "Sapne - Lashcurry", url: "./songs/Sapne - Lashcurry.mp3" },
     { title: "Jaadugar - Paradox", url: "./songs/Jaadugar - Paradox.mp3" },
