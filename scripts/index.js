@@ -182,3 +182,37 @@ if (shuffleButton) {
         shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
     });
 }
+
+// Drop Down
+document.addEventListener("DOMContentLoaded", function () {
+    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener("click", function (e) {
+            if (window.innerWidth < 768) {
+                e.preventDefault();
+
+                // Hide all other open dropdowns
+                document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                    if (menu !== this.nextElementSibling) {
+                        menu.style.display = "none";
+                    }
+                });
+
+                // Toggle current dropdown
+                const dropdownMenu = this.nextElementSibling;
+                dropdownMenu.style.display = 
+                    dropdownMenu.style.display === "flex" ? "none" : "flex";
+            }
+        });
+    });
+
+    // Close all dropdowns when clicking outside
+    document.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown")) {
+            document.querySelectorAll(".dropdown-menu").forEach(menu => {
+                menu.style.display = "none";
+            });
+        }
+    });
+});
