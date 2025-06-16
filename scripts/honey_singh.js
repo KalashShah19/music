@@ -1,8 +1,8 @@
 const songs = [
     { title: "KALAASTAR", url: "./songs/KALAASTAR.mp3" },
-    { title: "MILLIONAIRE", url: "./songs/MILLIONAIRE.mp3" },
-    { title: "Dil Chori", url: "./songs/Dil Chori.mp3" },
     { title: "Chhote Chhote Peg", url: "./songs/Chhote Chhote Peg.mp3" },
+    { title: "Dil Chori", url: "./songs/Dil Chori.mp3" },
+    { title: "MILLIONAIRE", url: "./songs/MILLIONAIRE.mp3" },
     { title: "One Bottle Down", url: "./songs/One Bottle Down.mp3" },
     { title: "Chaar Botal Vodka", url: "./songs/Chaar Botal Vodka.mp3" },
     { title: "Alcholic", url: "./songs/Alcholic.mp3" },
