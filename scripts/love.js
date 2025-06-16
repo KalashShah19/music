@@ -163,7 +163,7 @@ function changeMetaData(id){
     });
 }
 
-let isShuffle = true; // Set to true if you want shuffle mode enabled by default
+let isShuffle = false; // Set to true if you want shuffle mode enabled by default
 const recentSongs = []; // Stores the indices of recently played songs
 const maxRecent = 5; // Number of recent songs to exclude in shuffle
 
