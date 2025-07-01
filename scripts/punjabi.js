@@ -1,4 +1,4 @@
-Shuffle Offconst songs = [
+const songs = [
     { title: "True Stories", url: "./songs/True Stories.mp3" },
     { title: "Dior", url: "./songs/Dior.mp3" },
     { title: "Cheques", url: "./songs/Cheques.mp3" },

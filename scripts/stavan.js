@@ -1,4 +1,4 @@
-Shuffle Offconst songs = [
+const songs = [
     { title: "Uncha Shetrunjaya Na Shikharo Sohay", url: "./songs/UNCHA SHETRUNJAYA NA SHIKHARO SOHAY.mp3" },
     { title: "Jhume Re Jhume Aanande", url: "./songs/Jhume Re Jhume Aanande.mp3" },
     { title: "Ant Che Anant Nahi", url: "./songs/Ant Che Anant Nahi.mp3" },

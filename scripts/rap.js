@@ -1,4 +1,4 @@
-Shuffle Offconst songs = [
+const songs = [
     { title: "Dhiktana Dhiktana - Mad Trip", url: "./songs/Dhiktana Dhiktana - Mad Trip.mp3" },
     { title: "Bataa De Tu - 99side", url: "./songs/Bataa De Tu - 99side.mp3" },
     { title: "Boom Padi Dese - Mad Trip", url: "./songs/Boom Padi Dese - Mad Trip.mp3" },
