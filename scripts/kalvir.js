@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Kinna Sona", url: "./songs/Kinna Sona.mp3" },
     { title: "Tere Bina", url: "./songs/Tere Bina.mp3" },
     { title: "I Love You", url: "./songs/I Love You.mp3" },
@@ -190,7 +190,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -204,7 +204,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

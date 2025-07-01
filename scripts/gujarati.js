@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Dhun Laagi", url: "./songs/Dhun Laagi.mp3" },
     { title: "Vhalam Aavo Ne", url: "./songs/Vhalam Aavo Ne.mp3" },
     { title: "Chaand Ne Kaho", url: "./songs/Chaand Ne Kaho.mp3" },
@@ -164,7 +164,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -178,7 +178,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

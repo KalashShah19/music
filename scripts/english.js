@@ -1,16 +1,16 @@
 const songs = [
 
     { title: "Sapphire", url: "./songs/Sapphire.mp3" },
-    { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
     { title: "Save Your Tears Live", url: "./songs/Save Your Tears Live.mp3" },
+    { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
     { title: "Timeless", url: "./songs/Timeless.mp3" },
     { title: "Save Your Tears - Remix", url: "./songs/Save Your Tears - Remix.mp3" },
     { title: "Good For You x One Of The Girls", url: "./songs/Good For You x One Of The Girls.mp3" },
-    { title: "Save Your Tears", url: "./songs/Save Your Tears.mp3" },
+    { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "Lover - Taylor Swift", url: "./songs/Lover.mp3" },
+    { title: "Save Your Tears", url: "./songs/Save Your Tears.mp3" },
     { title: "All The Stars", url: "./songs/All The Stars.mp3" },
     { title: "Senorita", url: "./songs/Senorita.mp3" },
-    { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
     { title: "One Kiss x I Was Never There", url: "./songs/One Kiss x I Was Never There.mp3" },
     { title: "France Football Song", url: "./songs/France Football Song.mp3" },
@@ -202,7 +202,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -216,7 +216,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

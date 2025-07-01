@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Uncha Shetrunjaya Na Shikharo Sohay", url: "./songs/UNCHA SHETRUNJAYA NA SHIKHARO SOHAY.mp3" },
     { title: "Jhume Re Jhume Aanande", url: "./songs/Jhume Re Jhume Aanande.mp3" },
     { title: "Ant Che Anant Nahi", url: "./songs/Ant Che Anant Nahi.mp3" },
@@ -191,7 +191,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -205,7 +205,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

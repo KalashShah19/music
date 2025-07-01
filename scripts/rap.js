@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Dhiktana Dhiktana - Mad Trip", url: "./songs/Dhiktana Dhiktana - Mad Trip.mp3" },
     { title: "Bataa De Tu - 99side", url: "./songs/Bataa De Tu - 99side.mp3" },
     { title: "Boom Padi Dese - Mad Trip", url: "./songs/Boom Padi Dese - Mad Trip.mp3" },
@@ -171,7 +171,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -185,7 +185,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Tainu Khabar Nahi", url: "./songs/Tainu Khabar Nahi.mp3" },
     { title: "Tum Se", url: "./songs/Tum Se - Teri Baaton Mein Aisa Uljha Jiya.mp3" },
     { title: "Akhiyaan Gulaab", url: "./songs/Akhiyaan Gulaab - Teri Baaton Mein Aisa Uljha Jiya.mp3" },
@@ -183,7 +183,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -197,7 +197,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "359 AM - Divine", url: "./songs/359 AM - Divine.mp3" },
     { title: "Satya - Divine", url: "./songs/Satya - Divine.mp3" },
     { title: "The Big Bull", url: "./songs/The Big Bull.mp3" },
@@ -166,7 +166,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -180,7 +180,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 

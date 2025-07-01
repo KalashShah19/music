@@ -1,4 +1,4 @@
-const songs = [
+Shuffle Offconst songs = [
     { title: "Anuv Jain - JO TUM MERE HO", url: "./songs/Anuv Jain - JO TUM MERE HO.mp3" },
     { title: "Anuv Jain - HUSN", url: "./songs/Anuv Jain - HUSN.mp3" },
     { title: "AUR - TU HAI KAHAN", url: "./songs/AUR - TU HAI KAHAN.mp3" },
@@ -166,7 +166,7 @@ function changeSong(direction) {
             recentSongs.shift(); // Remove the oldest song index
         }
     } else {
-        // Normal sequential logic
+        // Normal Shuffle Off logic
         currentIndex = (currentIndex + direction + songs.length) % songs.length;
     }
 
@@ -180,7 +180,7 @@ const shuffleButton = document.getElementById("shuffle-toggle");
 if (shuffleButton) {
     shuffleButton.addEventListener("click", () => {
         isShuffle = !isShuffle;
-        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Sequential";
+        shuffleButton.textContent = isShuffle ? "🔀 Shuffle On" : "➡️ Shuffle Off";
     });
 }
 
