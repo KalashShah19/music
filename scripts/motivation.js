@@ -1,7 +1,8 @@
 const songs = [
+    { title: "Vardaan", url: "./songs/Vardaan.mp3" },
+    { title: "The Big Bull", url: "./songs/The Big Bull.mp3" },
     { title: "359 AM - Divine", url: "./songs/359 AM - Divine.mp3" },
     { title: "Satya - Divine", url: "./songs/Satya - Divine.mp3" },
-    { title: "The Big Bull", url: "./songs/The Big Bull.mp3" },
     { title: "Apna Time Aayega", url: "./songs/Apna Time Aayega.mp3" },
     { title: "Kohinoor - Divine", url: "./songs/Kohinoor - Divine.mp3" },
 ];
