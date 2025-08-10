@@ -1,6 +1,8 @@
 const songs = [
 
     { title: "Sapphire", url: "./songs/Sapphire.mp3" },
+    { title: "Just Keep Watching", url: "./songs/Just Keep Watching.mp3" },
+    { title: "Lose My Mind", url: "./songs/Lose My Mind.mp3" },
     { title: "Save Your Tears Live", url: "./songs/Save Your Tears Live.mp3" },
     { title: "One Of The Girls x Good For You", url: "./songs/One Of The Girls x Good For You.mp3" },
     { title: "Timeless", url: "./songs/Timeless.mp3" },
@@ -10,6 +12,7 @@ const songs = [
     { title: "Lover - Taylor Swift", url: "./songs/Lover.mp3" },
     { title: "Save Your Tears", url: "./songs/Save Your Tears.mp3" },
     { title: "All The Stars", url: "./songs/All The Stars.mp3" },
+    { title: "Industry Baby", url: "./songs/Industry Baby.mp3" },
     { title: "Senorita", url: "./songs/Senorita.mp3" },
     { title: "Die With A Smile", url: "./songs/Die With A Smile.mp3" },
     { title: "One Kiss x I Was Never There", url: "./songs/One Kiss x I Was Never There.mp3" },
