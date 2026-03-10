@@ -1,6 +1,7 @@
 const songs = [
 
     { title: "Sapphire", url: "./songs/Sapphire.mp3" },
+    { title: "Ordinary", url: "./songs/Ordinary.mp3" },
     { title: "Just Keep Watching", url: "./songs/Just Keep Watching.mp3" },
     { title: "Lose My Mind", url: "./songs/Lose My Mind.mp3" },
     { title: "Save Your Tears Live", url: "./songs/Save Your Tears Live.mp3" },
@@ -11,6 +12,7 @@ const songs = [
     { title: "Sunflower", url: "./songs/Sunflower.mp3" },
     { title: "Lover - Taylor Swift", url: "./songs/Lover.mp3" },
     { title: "Save Your Tears", url: "./songs/Save Your Tears.mp3" },
+    { title: "Cinnamon Girl", url: "./songs/Cinnamon Girl.mp3" },
     { title: "All The Stars", url: "./songs/All The Stars.mp3" },
     { title: "Industry Baby", url: "./songs/Industry Baby.mp3" },
     { title: "Senorita", url: "./songs/Senorita.mp3" },
