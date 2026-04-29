@@ -1,5 +1,8 @@
 const songs = [
-
+    
+    { title: "Fate of Ophelio", url: "./songs/Fate of Ophelio.mp3" },
+    { title: "Blank Space", url: "./songs/Blank Space.mp3" },
+    { title: "Espresso", url: "./songs/Sabrina Carpenter - Espresso.mp3" },
     { title: "Sapphire", url: "./songs/Sapphire.mp3" },
     { title: "Ordinary", url: "./songs/Ordinary.mp3" },
     { title: "Just Keep Watching", url: "./songs/Just Keep Watching.mp3" },
@@ -40,7 +43,6 @@ const songs = [
     { title: "Blinding Lights", url: "./songs/Blinding Lights.mp3" },
     { title: "Lovely", url: "./songs/Lovely.mp3" },
     { title: "Make You Mine", url: "./songs/Make You Mine.mp3" },
-    { title: "Sabrina Carpenter - Espresso", url: "./songs/Sabrina Carpenter - Espresso.mp3" },
     { title: "Stereo Hearts", url: "./songs/Stereo Hearts.mp3" },
     { title: "Under The Influence", url: "./songs/Under The Influence.mp3" },
     { title: "Watermelon Sugar", url: "./songs/Watermelon Sugar.mp3" },
